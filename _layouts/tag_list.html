@@ -12,17 +12,16 @@ layout: default
         
         {% assign page_tag = page.tag %}
         {% assign posts = site.pages | where_exp: "page", "page.tags contains page_tag" | sort: "date" | reverse %}
+        {% assign posts_count = posts | size %}
         
-        <h2>記事<span class="article-count">{{ posts | size }}</span>件</h2>
-        <ul>
+        <h2>記事<span class="article-count">{{ posts_count }}</span>件</h2>
+        {% if posts_count > 0 %}
             {% for post in posts %}
-                <li>
-                    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title | default: "無題"}}</a> - <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-                </li>
-            {% else %}
-                <li>該当する記事はありません。</li>
+                {% include blogcard.html post=post %}
             {% endfor %}
-        </ul>
+        {% else %}
+            <p>該当する記事はありません。</p>
+        {% endif %}
         
     </div>
 </article>

@@ -4,7 +4,7 @@
 {% assign url_parts_depth = url_parts_depth | minus:1 %}
 {% assign current_url = '/' %}
 <nav class="breadcrumb" aria-label="パンくずリスト">
-    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li class="breadcrumb-item" itemprop="itemListElement" itemscope
         itemtype="https://schema.org/ListItem">
             <a itemprop="item" href="{{ '/' | relative_url }}">

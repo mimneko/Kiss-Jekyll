@@ -37,7 +37,7 @@ layout: default
             <div class="article-tags">
                 <ul>
                 {% for tag in page.tags %}
-                    <li class="tag-link"><a href="{{ site.baseurl }}/tags/{{ tag }}">{{ site.data.slugs[tag] }}</a></li>
+                    <li class="tag-link"><a href="{{ site.baseurl }}/tags/{{ tag }}"><i class="fa-solid fa-tag"></i><span>{{ site.data.slugs[tag] }}</span></a></li>
                 {% endfor %}
                 </ul>
             </div>

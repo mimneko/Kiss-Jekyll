@@ -55,14 +55,12 @@ layout: default
             {% if article_count == 0 %}
                 <p>該当する記事はありません。</p>
             {% else %}
-                <ul>
-                    {% for p in non_list_pages %}
-                        {% assign page_url_prefix = p.url | slice: 0, current_url_length %}
-                        {% if page_url_prefix == current_url and p.url != current_url %}
-                        <li><a href="{{ p.url | relative_url }}">{{ p.title | default: "無題"}}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
+                {% for post in non_list_pages %}
+                    {% assign page_url_prefix = post.url | slice: 0, current_url_length %}
+                    {% if page_url_prefix == current_url and post.url != current_url %}
+                        {% include blogcard.html post=post %}
+                    {% endif %}
+                {% endfor %}
             {% endif %}
         </details>
 
