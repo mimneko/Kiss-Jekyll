@@ -8,6 +8,6 @@ Gem::Specification.new do |s|
   s.authors     = ['mimneko']
   s.email       = ['noreply@example.com']
   s.files       = Dir['**/*']
-  s.homepage    = 'https://mimneko.github.io/mimnekonote/'
+  s.homepage    = 'https://mimneko.github.io/note/'
   s.license     = 'MIT'
 end
