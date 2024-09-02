@@ -1,5 +1,10 @@
-    
-{% include head.html %}
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ja' }}">
+<head>
+    {% include head-common.html %}
+    {% include head-math.html %}
+    {% seo %}
+</head>
 
 <body>
     <div class="page-container">
