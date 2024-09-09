@@ -34,14 +34,43 @@ layout: default
     
     <div class="article-footer">
         <div class="article-categories-tags">
+            <!-- カテゴリ -->
+            <div class="article-categories">
+                {% assign url_parts = page.url | split: '/' %}
+                {% assign url_parts = url_parts | compact %}
+                {% assign url_parts_depth = url_parts | size %}
+                {% assign url_parts_depth = url_parts_depth | minus:1 %}
+                {% assign current_url = '/' %}
+                <ol class="category-list link-list">
+                    {% for i in (1..url_parts_depth) %}
+                        {% assign current_slug =  url_parts[i] %}
+                        {% assign current_url =  current_url | append: current_slug | append: '/' %}
+                
+                        {% if i != url_parts_depth %}
+                            <li class="breadcrumb-item">
+                                <a href="{{ current_url | relative_url }}">
+                                    <i class="fas fa-folder"></i>{{ site.data.slugs[current_slug] }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+            </div>
+            {% if page.tags %}
+            <!-- タグ -->
             <div class="article-tags">
-                <ul>
+                <ul class="tag-list link-list">
                 {% for tag in page.tags %}
-                    <li class="tag-link"><a href="{{ site.baseurl }}/tags/{{ tag }}"><i class="fa-solid fa-tag"></i><span>{{ site.data.slugs[tag] }}</span></a></li>
+                    <li><a href="{{ site.baseurl }}/tags/{{ tag }}"><i class="fa-solid fa-tag"></i>{{ site.data.slugs[tag] }}</a></li>
                 {% endfor %}
                 </ul>
             </div>
+            {% endif %}
         </div>
     </div>
 
 </article>
+
+
+
+

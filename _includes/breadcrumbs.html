@@ -31,13 +31,13 @@
                 <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem">
                     <a itemprop="item" href="{{ current_url | relative_url }}">
-                        {% if page.category %}
-                            <i class="fas fa-folder"></i>
-                            <span itemprop="name">{{ site.data.slugs[current_slug] }}</span>
-                        {% else %}
-                            <i class="fas fa-file"></i>
-                            <span itemprop="name">{{ page.title | default: "無題"}}</span>
-                        {% endif %}
+                    {% if page.category %}
+                        <i class="fas fa-folder"></i>
+                        <span itemprop="name">{{ site.data.slugs[current_slug] }}</span>
+                    {% else %}
+                        <i class="fas fa-file"></i>
+                        <span itemprop="name">{{ page.title | default: "無題"}}</span>
+                    {% endif %}
                     </a>
                     <meta itemprop="position" content="{{ i_plus_one }}" />
                 </li>
