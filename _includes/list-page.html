@@ -1,11 +1,11 @@
 <div class="folder-tree">
     {% assign sorted_pages = site.pages | sort: 'url' %}
-    {% assign filtered_pages = sorted_pages | where_exp: "page", "page.url != '/'" %}
-    {% assign filtered_pages = filtered_pages | where_exp: "page", "page.url != '/404.html'" %}
-    {% assign filtered_pages = filtered_pages | where_exp: "page", "page.url != '/robots.txt'" %}
-    {% assign filtered_pages = filtered_pages | where_exp: "page", "page.url != '/sitemap.xml'" %}
-    {% assign filtered_pages = filtered_pages | where_exp: "page", "page.url != '/feed.xml'" %}
-
+    {% assign exclude_urls = '/, /404.html, /robots.txt, /sitemap.xml, /feed.xml' | split: ', ' %}
+    {% assign filtered_pages = sorted_pages %}
+    {% for url in exclude_urls %}
+        {% assign filtered_pages = filtered_pages | where_exp: "page", "page.url != url" %}
+    {% endfor %}
+    
     <ul>
     {% for page1 in filtered_pages %}
         {% assign depth1 = page1.url | replace: "/", " " | number_of_words %}
